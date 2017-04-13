@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BarISTa</title>
+
+	<link rel="stylesheet" href="Website.css">
+	<style type="text/css"> </style>
+
+	<script type="text/javascript">
+		
+		var info = 0;
+
+		function Information() {
+	    	if (info == 0) {
+		        var overlay = document.getElementById("OverlayInformation");
+		        var popup = document.getElementById("PopupInformation");
+		        overlay.style.display = "block";
+		        popup.style.display = "block";     		        
+		        info = 1;
+		    }
+		    else {
+	        	var overlay = document.getElementById("OverlayInformation");
+	        	var popup = document.getElementById("PopupInformation");
+	        	overlay.style.display = "none";
+	        	popup.style.display = "none";
+	        	info = 0; 
+			}
+    	}
+
+		function CarregaPagina(ref) {
+			var lista = sessionStorage.getItem("lista").split(",");
+			var idComentarProduto = JSON.parse(sessionStorage.getItem("idComentarProduto"))
+			if (ref == "Voltar") {
+				lista.splice(lista.length-1, 1);
+				var x = lista.length-1;
+				location.href = lista[x];
+			}
+			else if (ref == 'Musica') {
+	    		location.href = 'MenuMusica.html';
+				lista.push("MenuMusica.html");
+			}
+			else if (ref == 'Bebida') {
+				lista = [lista[0]]
+				lista.push("MenuEmenta.html")
+	    		lista.push("MenuBebida.html");
+	    		location.href = 'MenuBebida.html';
+			}
+			else if (ref == 'Escrever') {
+				lista = [lista[0]]
+				lista.push("MenuSugestoes.html")
+	    		lista.push("MenuInserirComentario.html");
+	    		location.href = 'MenuInserirComentario.html';
+			}
+			else if (ref == 'Ler') {
+				lista = [lista[0]]
+				lista.push("MenuSugestoes.html")
+	    		lista.push("MenuVerComentarios.html");
+	    		location.href = 'MenuVerComentarios.html';
+			}
+			else if (ref == 'Pessoal') {
+				lista = [lista[0]]
+				lista.push("MenuMusica.html")
+	    		lista.push("MenuPessoal.html");
+	    		location.href = 'MenuPessoal.html';
+			}
+			else if (ref == 'Geral') {
+				lista = [lista[0]]
+				lista.push("MenuMusica.html")
+	    		lista.push("MenuGeral.html");
+	    		location.href = 'MenuGeral.html';
+			}
+			else if (ref == 'Home') {
+				lista = [lista[0]]
+	    		location.href = lista[0];
+			}
+			else {
+				if (idComentarProduto == null) {
+					idComentarProduto = ["comidas", ref]
+				}
+				else {
+					idComentarProduto = JSON.parse(sessionStorage.getItem("idComentarProduto"))
+					idComentarProduto.push("comidas")
+					idComentarProduto.push(ref)
+				}
+				sessionStorage.setItem("idComentarProduto",JSON.stringify(idComentarProduto))
+				lista.push("MenuVerComentariosProdutos.html");
+	    		location.href = "MenuVerComentariosProdutos.html";
+			}
+			sessionStorage.setItem("lista", lista);
+	  	}
+	  	
+	</script>
+	
+</head>
+
+
+<body style="font-family:sans-serif; text-align: center; margin: 0%">
+	<div id="mySidenav" class="sidenav">
+		<div style="position: absolute; top: 0%; left: 37%"><h4> Ol&aacute; Hugo! </h4></div>
+	  	<a style="position: absolute; right: 5%; top: 1%" class="closebtn menu_home" onclick="closeNav()">&times;</a>
+		<table style="margin-top: 10%;">
+			<tr>
+			  	<td><div style="transform: rotate(-90deg); margin-left:-40%">Ementa</div></td>
+		  		<td><img style="margin-left:-80%; margin-top:10%; opacity: 0.5;" src="Comida.png" width="115%"></img></td>
+				<td><img style="margin-left:-40%; margin-top:10%; cursor:pointer;" src="Bebida.png" width="115%" onclick="CarregaPagina('Bebida')" class="menu_home"></img></td>
+			</tr>
+		  	<tr><td colspan="3" style="border-top: 2px solid #001c2a; padding-bottom: 2%"></td></tr>
+		  	<tr><td colspan="3" style="visibility: hidden; padding-bottom: 10%"></td></tr>
+		  	<tr>
+			  	<td><div style="transform: rotate(-90deg); margin-left:-40%">M&uacute;sica</div></td>
+		  		<td><img style="margin-left:-80%; margin-top:10%; cursor:pointer" src="Pessoal.png" width="115%" onclick="CarregaPagina('Pessoal')" class="menu_home"></img></td>
+				<td><img style="margin-left:-40%; margin-top:10%; cursor:pointer" src="Geral.png" width="115%" onclick="CarregaPagina('Geral')" class="menu_home"></img></td>
+			</tr>
+			<tr><td colspan="3" style="border-top: 2px solid #001c2a; padding-bottom: 2%"></td></tr>
+		  	<tr><td colspan="3" style="visibility: hidden; padding-bottom: 10%"></td></tr>
+			<tr>
+			  	<td><div style="transform: rotate(-90deg); margin-left:-40%">Sugest&otilde;es</div></td>
+		  		<td><img style="margin-left:-80%; margin-top:10%; cursor:pointer" src="Escrever.png" width="115%" onclick="CarregaPagina('Escrever')" class="menu_home"></img></td>
+				<td><img style="margin-left:-40%; margin-top:10%; cursor:pointer" src="Ler.png" width="115%" onclick="CarregaPagina('Ler')" class="menu_home"></img></td>
+			</tr>
+			<tr><td colspan="3" style="border-top: 2px solid #001c2a; padding-bottom: 2%"></td></tr>
+			<tr class="menu_home">
+				<td> <img style="padding-top:20%; margin-left:60%; cursor:pointer;" src="HomeButton.png" width="60%" onclick="CarregaPagina('Home')"> </img></td>
+				<td style="padding-top:8%; font-size:145%; padding-left:10%; color:#E6E6E6; cursor:pointer;" onclick="CarregaPagina('Home')"> HOME </td>
+			</tr>
+		</table>
+	</div>
+	<div id="main">
+		<div><img style="position:fixed; opacity:0.20;" src="ComidaIcon.png" width="50%" height="100%"></img></div>
+		<div style="padding-top: 8.5%"><h1> Comidas </h1></div>
+		<div><img onclick="Information()" class="InfoButton menu_home" src="HelpButton.png" style="cursor:pointer"></img></div>
+		<div id="OverlayInformation1" onclick="closeNav()"></div>
+		<div id="OverlayInformation" onclick="Information()"></div>
+		<div style="margin: 0 auto; height: 42%" id="PopupInformation">
+		   	<h2 style="padding-top: 2%"> Menu Comida </h2>
+			<h4> Neste menu encontra-se a lista de comidas existentes no bar</h4>
+			<ul style="text-align: left; padding-right: 5%; padding-left: 7.5%">
+				<li> A tabela apresentada serve exclusivamente para o utilizador os produtos existentes no bar, a sua classifica&ccedil;&atilde;o de acordo com o n&uacute;mero de vota&ccedil;&otilde;es feitas pelos outros utentes do bar.</li>
+				<li> Para atribuir uma nova classifica&ccedil;&atilde;o tem que carregar no bot&atilde;o "Ver/Avaliar" na coluna dos coment&aacute;rios. A atribui&ccedil;&atilde;o de uma classifica&ccedil;&atilde;o &eacute; considerada como um coment&aacute;rio.</li>
+				<li> Ao carregar no bot&atilde;o "Ver/Avaliar" na coluna dos coment&aacute;rios, vai poder visualizar os coment&aacute;rios das outras pessoas ao produto escolhido, mas tamb&eacute;m tem a possibilidade de inserir um novo. </li>
+			</ul>
+		<div><img onclick="Information()" class="CloseButton menu_home" src="CloseIcon.png" style="cursor:pointer"></img></div>
+		</div>
+		
+		<div onclick="CarregaPagina('Voltar')" class="BotaoVoltar menu_home" style="cursor:pointer"><h2> Voltar </h2></div>
+		<div class="qwerty">
+			<h4 style="margin-top: 1.3%"> </h4>
+			<img style="position: absolute; top:1%; left:95.35%; cursor:pointer" src="Musica.png" width="4.75%" onclick="CarregaPagina('Musica')" class="menu_home">
+		</div>
+
+		<div style="position:absolute; left:3%; top:30%; width:90%; border-top:5px solid grey;">
+			<div class="tabelaProdutos" style="padding-top: 2%" id="listaProdutos">
+	  			<div> <input class="search" placeholder=" Procurar" style="font-size:150%; width:50%; border:0.2px solid grey"/> </div>
+	  			<form style="position: absolute; top: 7.5%; right: 0%; font-size: 120%; color:black;font-weight: bold" action="action_page.php">
+					Ordenar por:
+					<select style="background-color:  #EBEBEB; color:#555555; font-size: 100%" name="Stars" id="Stars">
+					    <option value="NomeAZ"> Nome A-Z </option>					   
+					    <option value="NomeZA"> Nome Z-A </option>
+					    <option value="PrecoAsc"> Preco Ascendente </option>
+   					    <option value="PrecoDesc"> Preco Descendente </option>
+					</select>
+				</form>
+				<center> <div style="padding-top: 2%; width: 80%">
+		  			<table>
+						<thead style="font-size: 80%">
+							<tr>
+								<th width="15%"> Imagem </th>
+								<th width="27.5%"> Nome </th>
+								<th width="10%"> Pre&ccedil;o </th>
+								<th width="25%" colspan="2"> Avalia&ccedil;&atilde;o </th>
+								<th width="17.5%"> Coment&aacute;rios </th>
+							</tr>
+						</thead>
+						<tbody class="list" style="font-size:65%">
+							<tr class="tabelaColuna">
+								<td><img src="Hamburguer.png" width="30%"></td>
+								<td class="nome"> Hamburguer </td>
+								<td class="preco"> 1.50 &euro; </td>
+								<td><center>
+									<img id="Hamburguer0" style="display: none;" src="0Estrelas.png" width="65%">
+									<img id="Hamburguer1" style="display: none;" src="1Estrelas.png" width="65%">
+									<img id="Hamburguer2" style="display: none;" src="2Estrelas.png" width="65%">
+									<img id="Hamburguer3" style="display: none;" src="3Estrelas.png" width="65%">
+									<img id="Hamburguer4" style="display: none;" src="4Estrelas.png" width="65%">
+									<img id="Hamburguer5" style="display: none;" src="5Estrelas.png" width="65%">
+								</center></td>
+								<td style="width:9%" id="Hamburguer"></td>
+								<td> <h4 onclick="CarregaPagina('Hamburguer')" class="VerInserirComentario menu_home" style="cursor:pointer"> Ver/Avaliar </h4> </td>
+							</tr>
+							<tr class="tabelaColuna">
+								<td><img src="CachorroQuente.png" width="30%"></td>
+								<td class="nome"> Cachorro Quente </td>
+								<td class="preco"> 2.00 &euro; </td>
+								<td><center>
+									<img id="CachorroQuente0" style="display: none;" src="0Estrelas.png" width="65%">
+									<img id="CachorroQuente1" style="display: none;" src="1Estrelas.png" width="65%">
+									<img id="CachorroQuente2" style="display: none;" src="2Estrelas.png" width="65%">
+									<img id="CachorroQuente3" style="display: none;" src="3Estrelas.png" width="65%">
+									<img id="CachorroQuente4" style="display: none;" src="4Estrelas.png" width="65%">
+									<img id="CachorroQuente5" style="display: none;" src="5Estrelas.png" width="65%">
+								</center></td>
+								<td id="CachorroQuente"></td>
+								<td> <h4 onclick="CarregaPagina('CachorroQuente')" class="VerInserirComentario menu_home" style="cursor:pointer"> Ver/Avaliar </h4> </td>
+							</tr>
+							<tr class="tabelaColuna">
+								<td><img src="Kebab.png" width="30%"></td>
+								<td class="nome"> Kebab </td>
+								<td class="preco"> 1.50 &euro; </td>
+								<td><center>
+									<img id="Kebab0" style="display: none;" src="0Estrelas.png" width="65%">
+									<img id="Kebab1" style="display: none;" src="1Estrelas.png" width="65%">
+									<img id="Kebab2" style="display: none;" src="2Estrelas.png" width="65%">
+									<img id="Kebab3" style="display: none;" src="3Estrelas.png" width="65%">
+									<img id="Kebab4" style="display: none;" src="4Estrelas.png" width="65%">
+									<img id="Kebab5" style="display: none;" src="5Estrelas.png" width="65%">
+								</center></td>
+								<td id="Kebab"></td>
+								<td> <h4 onclick="CarregaPagina('Kebab')" class="VerInserirComentario menu_home" style="cursor:pointer;"> Ver/Avaliar </h4> </td>
+							</tr>
+							<tr class="tabelaColuna">
+								<td><img src="Pizza.png" width="30%"></td>
+								<td class="nome"> Pizza </td>
+								<td class="preco"> 1.00 &euro; </td>
+								<td><center>
+									<img id="Pizza0" style="display: none;" src="0Estrelas.png" width="65%">
+									<img id="Pizza1" style="display: none;" src="1Estrelas.png" width="65%">
+									<img id="Pizza2" style="display: none;" src="2Estrelas.png" width="65%">
+									<img id="Pizza3" style="display: none;" src="3Estrelas.png" width="65%">
+									<img id="Pizza4" style="display: none;" src="4Estrelas.png" width="65%">
+									<img id="Pizza5" style="display: none;" src="5Estrelas.png" width="65%">
+								</center></td>
+								<td id="Pizza"></td>
+								<td> <h4 onclick="CarregaPagina('Pizza')" class="VerInserirComentario menu_home" style="cursor:pointer;"> Ver/Avaliar </h4> </td>
+							</tr>
+							<tr class="tabelaColuna">
+								<td><img src="PastelNata.png" width="30%"></td>
+								<td class="nome"> Pastel de Nata </td>
+								<td class="preco"> 0.50 &euro; </td>
+								<td><center>
+									<img id="PastelNata0" style="display: none;" src="0Estrelas.png" width="65%">
+									<img id="PastelNata1" style="display: none;" src="1Estrelas.png" width="65%">
+									<img id="PastelNata2" style="display: none;" src="2Estrelas.png" width="65%">
+									<img id="PastelNata3" style="display: none;" src="3Estrelas.png" width="65%">
+									<img id="PastelNata4" style="display: none;" src="4Estrelas.png" width="65%">
+									<img id="PastelNata6" style="display: none;" src="5Estrelas.png" width="65%">
+								</center></td>
+								<td id="PastelNata"></td>
+								<td> <h4 onclick="CarregaPagina('PastelNata')" class="VerInserirComentario menu_home" style="cursor:pointer;"> Ver/Avaliar </h4> </td>
+							</tr>
+						</tbody>
+					</table>
+				</div> </center>
+			</div>	
+		</div>
+		<span style="position:absolute; top: 1%; left: 2%; font-size:450%; cursor:pointer; color:#3F3E3E;" onclick="openNav()" class="menu_home">&equiv;</span>
+	</div>
+	<script>
+		function openNav() {
+		    document.getElementById("mySidenav").style.width = "22%";
+		    setTimeout(function() {
+		    document.getElementById("OverlayInformation1").style.display = "block";
+   		    document.getElementById("OverlayInformation1").style.left = "22%";
+		    }, 650);
+		}
+
+		function closeNav() {
+		    document.getElementById("mySidenav").style.width = "0%";
+		    document.getElementById("OverlayInformation1").style.display = "none";
+   		    document.getElementById("OverlayInformation1").style.left = "0%";
+		}
+	</script>
+	<script src="jquery.min.js"></script>
+	<script src="list.min.js"></script>
+	<script type="text/javascript">
+		
+		var options = { valueNames:['nome', 'preco'] };
+		var userList = new List('listaProdutos', options);
+		userList.sort('nome', { order: "asc" });
+		
+		$('select').change(function() {
+			qwerty = $('#Stars option:selected').val();
+			if (qwerty == "NomeAZ") {
+				userList.sort('nome', { order:"asc" });			
+			}
+			else if (qwerty == "NomeZA") {
+				userList.sort('nome', { order:"desc" });			
+			}
+			else if (qwerty == "PrecoAsc") {
+				userList.sort('preco', { order:"asc"});
+			}
+			else if (qwerty == "PrecoDesc") {
+				userList.sort('preco', { order:"desc"});
+			}
+		});
+
+		var listaProdutos = JSON.parse(sessionStorage.getItem("listaProdutos"));
+		var produto;
+		var clas;
+		for (i=0; i < listaProdutos[3].length; i+=2) {
+			produto = listaProdutos[3][i];
+			clas = listaProdutos[3][i+1][listaProdutos[3][i+1].length-1];
+			$("#"+produto).html((listaProdutos[3][i+1].length-2)/2 + " votos")
+		 	document.getElementById(produto + Math.round(clas)).style.display = "block";
+		}
+	</script>
+	<script src="jquery.min.js"></script>
+	<script type="text/javascript">
+		
+  		var listaGeral = JSON.parse(sessionStorage.getItem("listaGeral"));
+		if (listaGeral[0].gostos == 0) {
+			$(".qwerty").children().html(listaGeral[0].nome + " - " + listaGeral[0].album + " - " + listaGeral[0].artista)
+		}
+		else {
+			listaGeral.sort(listaSort('gostos'));
+			$(".qwerty").children().html(listaGeral[0].nome + " - " + listaGeral[0].album + " - " + listaGeral[0].artista)
+		}
+		sessionStorage.setItem("listaGeral",JSON.stringify(listaGeral));
+
+		function listaSort(ref) {
+			return function(var1, var2) {
+				return (var1[ref] > var2[ref]) ? -1:(var1[ref] < var2[ref] ? 1:0);
+			}
+		}
+
+		setInterval(function() {
+			listaGeral = JSON.parse(sessionStorage.getItem("listaGeral"));
+			listaGeral[0].gostos = 0;
+			listaGeral[0].botao = "LikeButtonUncheck.png";
+			listaGeral.push(listaGeral[0]);
+			listaGeral.shift();
+			sessionStorage.setItem("listaGeral",JSON.stringify(listaGeral));
+			if (listaGeral[0].gostos == 0) {
+				$(".qwerty").children().html(listaGeral[0].nome + " - " + listaGeral[0].album + " - " + listaGeral[0].artista)
+			}
+			else {
+				listaGeral.sort(listaSort('gostos'));
+				$(".qwerty").children().html(listaGeral[0].nome + " - " + listaGeral[0].album + " - " + listaGeral[0].artista)
+			}
+			sessionStorage.setItem("listaGeral",JSON.stringify(listaGeral));
+
+			function listaSort(ref) {
+				return function(var1, var2) {
+					return (var1[ref] > var2[ref]) ? -1:(var1[ref] < var2[ref] ? 1:0);
+				}
+			}
+		}, 5000);
+	</script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BarISTa</title>
+
+	<link rel="stylesheet" href="Website.css">
+	<style type="text/css"> </style>
+
+	<script type="text/javascript">
+			
+		var info = 0;
+
+		function Information() {
+	    	if (info == 0) {
+		        var overlay = document.getElementById("OverlayInformation");
+		        var popup = document.getElementById("PopupInformation");
+		        overlay.style.display = "block";
+		        popup.style.display = "block";     		        
+		        info = 1;
+		    }
+		    else {
+	        	var overlay = document.getElementById("OverlayInformation");
+	        	var popup = document.getElementById("PopupInformation");
+	        	overlay.style.display = "none";
+	        	popup.style.display = "none";
+	        	info = 0; 
+			}
+    	}
+
+		function CarregaPagina(ref) {
+			var lista = sessionStorage.getItem("lista").split(",");
+			if (ref == 'Escrever') {
+	    		location.href = "MenuInserirComentario.html";
+				lista.push("MenuInserirComentario.html");
+			}
+			else if (ref == 'Ler') {
+				location.href = "MenuVerComentarios.html";
+				lista.push("MenuVerComentarios.html");
+			}
+			else if (ref == "Voltar") {
+				lista.splice(lista.length-1, 1);
+				var x = lista.length-1;
+				location.href = lista[x];
+			}
+			else if (ref == 'Musica') {
+	    		location.href = 'MenuMusica.html';
+				lista.push("MenuMusica.html");
+			}
+			else if (ref == 'Comida') {
+				lista = [lista[0]]
+				lista.push("MenuEmenta.html")
+	    		lista.push("MenuComida.html");
+	    		location.href = 'MenuComida.html';
+	    	}
+			else if (ref == 'Bebida') {
+				lista = [lista[0]]
+				lista.push("MenuEmenta.html")
+	    		lista.push("MenuBebida.html");
+	    		location.href = 'MenuBebida.html';
+			}
+			else if (ref == 'Pessoal') {
+				lista = [lista[0]]
+				lista.push("MenuMusica.html")
+	    		lista.push("MenuPessoal.html");
+	    		location.href = 'MenuPessoal.html';
+			}
+			else if (ref == 'Geral') {
+				lista = [lista[0]]
+				lista.push("MenuMusica.html")
+	    		lista.push("MenuGeral.html");
+	    		location.href = 'MenuGeral.html';
+			}
+			else if (ref == 'Home') {
+				lista = [lista[0]]
+	    		location.href = lista[0];
+			}
+			sessionStorage.setItem("lista", lista);
+	  	}
+	  	
+	</script>
+	
+</head>
+
+
+<body style="font-family:sans-serif; text-align: center; margin: 0%">
+	<div id="mySidenav" class="sidenav">
+		<div style="position: absolute; top: 0%; left: 37%"><h4> Ol&aacute; Hugo! </h4></div>
+		<a style="position: absolute; right: 5%; top: 1%" class="closebtn menu_home" onclick="closeNav()">&times;</a>
+		<table style="margin-top: 10%;">
+		  	<tr>
+			  	<td><div style="transform: rotate(-90deg); margin-left:-40%">Ementa</div></td>
+		  		<td><img style="margin-left:-80%; margin-top:10%; cursor:pointer" src="Comida.png" width="115%" onclick="CarregaPagina('Comida')" class="menu_home"></img></td>
+				<td><img style="margin-left:-40%; margin-top:10%; cursor:pointer" src="Bebida.png" width="115%" onclick="CarregaPagina('Bebida')" class="menu_home"></img></td>
+			</tr>
+		  	<tr><td colspan="3" style="border-top: 2px solid #001c2a; padding-bottom: 2%"></td></tr>
+		  	<tr><td colspan="3" style="visibility: hidden; padding-bottom: 10%"></td></tr>
+		  	<tr>
+			  	<td><div style="transform: rotate(-90deg); margin-left:-40%">M&uacute;sica</div></td>
+		  		<td><img style="margin-left:-80%; margin-top:10%; cursor:pointer" src="Pessoal.png" width="115%" onclick="CarregaPagina('Pessoal')" class="menu_home"></img></td>
+				<td><img style="margin-left:-40%; margin-top:10%; cursor:pointer" src="Geral.png" width="115%" onclick="CarregaPagina('Geral')" class="menu_home"></img></td>
+			</tr>
+			<tr><td colspan="3" style="border-top: 2px solid #001c2a; padding-bottom: 2%"></td></tr>
+		  	<tr><td colspan="3" style="visibility: hidden; padding-bottom: 10%"></td></tr>
+			<tr>
+			  	<td><div style="transform: rotate(-90deg); margin-left:-40%">Sugest&otilde;es</div></td>
+		  		<td><img style="margin-left:-80%; margin-top:10%; cursor:pointer" src="Escrever.png" width="115%" onclick="CarregaPagina('Escrever')" class="menu_home"></img></td>
+				<td><img style="margin-left:-40%; margin-top:10%; cursor:pointer" src="Ler.png" width="115%" onclick="CarregaPagina('Ler')" class="menu_home"></img></td>
+			</tr>
+			<tr><td colspan="3" style="border-top: 2px solid #001c2a; padding-bottom: 2%"></td></tr>
+			<tr class="menu_home">
+				<td> <img style="padding-top:20%; margin-left:60%; cursor:pointer;" src="HomeButton.png" width="60%" onclick="CarregaPagina('Home')"> </img></td>
+				<td style="padding-top:8%; font-size:145%; padding-left:10%; color:#E6E6E6; cursor:pointer;" onclick="CarregaPagina('Home')"> HOME </td>
+			</tr>
+		</table>
+	</div>
+		<div id="main">
+		<div><img style="position:fixed; opacity:0.20;" src="SugestoesIcon.png" width="50%" height="100%"></img></div>
+		<div style="padding-top: 8.5%"><h1> Sugest&otilde;es </h1></div>		
+		<div><img onclick="Information()" class="InfoButton menu_home" src="info.png" style="cursor:pointer"></img></div>
+		<div id="OverlayInformation1" onclick="closeNav()"></div>
+		<div id="OverlayInformation" onclick="Information()"></div>
+		<div style="margin: 0 auto; height: 41%" id="PopupInformation">
+		   	<h2 style="padding-top: 2%"> Menu Sugest&otilde;es </h2>
+			<h4 style="padding-left: 2%; padding-right: 2%"> Neste menu poder&aacute; aceder &agrave; lista de coment&aacute;rios deste bar como tamb&eacute;m poder&aacute; adicionar um novo coment&aacute;rio </h4>
+			<ul style="text-align: left; padding-right: 5%; padding-left: 7.5%">
+				<li> No Menu Escrever poder&aacute; introduzir um coment&aacute;rio referente a algum aspecto que menos gostou no bar, ou at&eacute; mesmo dar opini&otilde;es, as quais ter&atilde;o oportunidades de serem lidas pela ger&ecirc;ncia. </li>
+				<li> No Menu Ler poder&aacute; ler coment&aacute;rios de outros utilizadores do bar. </li>
+			</ul>
+			<h6 style="padding-left: 2%; padding-right: 2%"> Ao escrever a sua aprecia&ccedil;&atilde;o cr&itilde;tica lembre-se de ser honesto, para n&atilde;o induzir em erro os outros utilizadores. Se for ler, lembre-se que os coment&aacute;rios poder&atilde;o n&atilde;o corresponder &agrave; realidade.</h6>
+		<div><img onclick="Information()" class="CloseButton menu_home" src="CloseIcon.png" style="cursor:pointer"></img></div>
+		</div>
+		
+		<div onclick="CarregaPagina('Voltar')" class="BotaoVoltar menu_home" style="cursor:pointer"><h2> Voltar </h2></div>
+		<div class="qwerty">
+			<h4 style="margin-top: 1.3%"> </h4>
+			<img style="position: absolute; top:1%; left:95.35%; cursor:pointer" src="Musica.png" width="4.75%" onclick="CarregaPagina('Musica')" class="menu_home">
+		</div>
+
+		<div style="position:absolute; left:3%; top:30%; width:90%; border-top:5px solid grey;">
+			<table style="margin-top:5%; border-spacing:10%;">
+				<tr>
+					<th></th>
+					<th></th>
+					<th class="FontMenus"></th>
+					<th></th>
+					<th class="FontMenus"> Escrever </th>
+					<th></th>
+					<th class="FontMenus"> Ler </th>
+					<th></th>
+					<th class="FontMenus"></th>
+					<th></th>
+					<th></th>
+				</tr>
+				</tr>
+					<td style="visibility:hidden"> <img src="SetaEsquerda.png" width="80%"></img> </td>
+					<td style="width:2%; height:2%"></td>
+					<td style="visibility:hidden"> <img src="Jogos.png" width="107%"></img></td>
+					<td style="width:2%; height:2%"></td>
+					<td onclick="CarregaPagina('Escrever')"> <img src="Escrever.png" width="107%" class="menu_home" style="cursor:pointer"></img> </td>
+					<td style="width:2%; height:2%"></td>
+					<td onclick="CarregaPagina('Ler')"> <img src="Ler.png" width="107%" class="menu_home" style="cursor:pointer"></img> </td>
+					<td style="width:2%; height:2%"></td>
+					<td style="visibility:hidden"> <img src="Cesto.png" width="107%"></img> </td>
+					<td style="width:2%; height:2%"></td>
+					<td style="visibility:hidden"> <img src="SetaDireita.png" width="80%"></img> </td>
+				</tr>
+			</table>	
+		</div>
+		<span style="position:absolute; top: 1%; left: 2%; font-size:450%; cursor:pointer; color:#3F3E3E;" onclick="openNav()" class="menu_home">&equiv;</span>
+	</div>
+	<script>
+		function openNav() {
+		    document.getElementById("mySidenav").style.width = "22%";
+		    setTimeout(function() {
+		    document.getElementById("OverlayInformation1").style.display = "block";
+   		    document.getElementById("OverlayInformation1").style.left = "22%";
+		    }, 650);
+		}
+
+		function closeNav() {
+		    document.getElementById("mySidenav").style.width = "0%";
+		    document.getElementById("OverlayInformation1").style.display = "none";
+   		    document.getElementById("OverlayInformation1").style.left = "0%";
+		}
+	</script>
+	<script src="jquery.min.js"></script>
+	<script type="text/javascript">
+		
+  		var listaGeral = JSON.parse(sessionStorage.getItem("listaGeral"));
+		if (listaGeral[0].gostos == 0) {
+			$(".qwerty").children().html(listaGeral[0].nome + " - " + listaGeral[0].album + " - " + listaGeral[0].artista)
+		}
+		else {
+			listaGeral.sort(listaSort('gostos'));
+			$(".qwerty").children().html(listaGeral[0].nome + " - " + listaGeral[0].album + " - " + listaGeral[0].artista)
+		}
+		sessionStorage.setItem("listaGeral",JSON.stringify(listaGeral));
+
+		function listaSort(ref) {
+			return function(var1, var2) {
+				return (var1[ref] > var2[ref]) ? -1:(var1[ref] < var2[ref] ? 1:0);
+			}
+		}
+
+		setInterval(function() {
+			listaGeral = JSON.parse(sessionStorage.getItem("listaGeral"));
+			listaGeral[0].gostos = 0;
+			listaGeral[0].botao = "LikeButtonUncheck.png";
+			listaGeral.push(listaGeral[0]);
+			listaGeral.shift();
+			sessionStorage.setItem("listaGeral",JSON.stringify(listaGeral));
+			if (listaGeral[0].gostos == 0) {
+				$(".qwerty").children().html(listaGeral[0].nome + " - " + listaGeral[0].album + " - " + listaGeral[0].artista)
+			}
+			else {
+				listaGeral.sort(listaSort('gostos'));
+				$(".qwerty").children().html(listaGeral[0].nome + " - " + listaGeral[0].album + " - " + listaGeral[0].artista)
+			}
+			sessionStorage.setItem("listaGeral",JSON.stringify(listaGeral));
+
+			function listaSort(ref) {
+				return function(var1, var2) {
+					return (var1[ref] > var2[ref]) ? -1:(var1[ref] < var2[ref] ? 1:0);
+				}
+			}
+		}, 5000);
+	</script>
+</body>
+</html>

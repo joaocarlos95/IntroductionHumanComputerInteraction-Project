@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BarISTa</title>
+
+	<link rel="stylesheet" href="Website.css">
+	<style type="text/css"> </style>
+
+	<script type="text/javascript">
+
+		if (sessionStorage.getItem("variavelGeral") == null) {
+			sessionStorage.setItem("variavelGeral",1);
+		}
+
+		if (JSON.parse(sessionStorage.getItem("listaGeral")) == null) {
+
+			var Musica1 = {nome:"Still Loving You", album:"Love at First Sting", artista:"Scorpions", gostos:34, botao:"LikeButtonUncheck.png", albumImagem:"LoveatFirstSting.png"};
+			var Musica2 = {nome:"Humanity", album:"Humanity Hour I", artista:"Scorpions", gostos:63, botao:"LikeButtonUncheck.png", albumImagem:"HumanityHourI.png"};
+			var Musica3 = {nome:"My Immortal", album:"Origin", artista:"Evanescence", gostos:86, botao:"LikeButtonUncheck.png", albumImagem:"Origin.png"};
+			var Musica4 = {nome:"Adventure of a Lifetime", album:"A Head Full of Dreams", artista:"Coldplay", gostos:4, botao:"LikeButtonUncheck.png", albumImagem:"AHeadFullofDreams.png"};
+			var Musica5 = {nome:"Throw Away Your Television", album:"By the Way", artista:"Red Hot Chili Peppers", gostos:21, botao:"LikeButtonUncheck.png", albumImagem:"ByTheWay.png"};
+			var Musica6 = {nome:"Amazing", album:"Get a Grip", artista:"Aerosmith", gostos:73, botao:"LikeButtonUncheck.png", albumImagem:"GetAGrip.png"};
+			var Musica7 = {nome:"Lie to Me", album:"These Days", artista:"Bon Jovi", gostos:54 ,botao:"LikeButtonUncheck.png", albumImagem:"TheseDays.png"};
+			var Musica8 = {nome:"Goodbye Heartbreak", album:"Greatest Hits", artista:"Lighthouse Family", gostos:203, botao:"LikeButtonUncheck.png", albumImagem:"GreatestHitsLHF.png"};
+			var Musica9 = {nome:"Beat It", album:"Thriller", artista:"Michael Jackson", gostos:204, botao:"LikeButtonUncheck.png", albumImagem:"Thriller.png"};
+			var Musica10 = {nome:"I belong to You", album:"5", artista:"Lenny Kravitz", gostos:7, botao:"LikeButtonUncheck.png", albumImagem:"5.png"};
+
+			var listaGeral = [Musica1, Musica2, Musica3, Musica4, Musica5, Musica6, Musica7, Musica8, Musica9, Musica10]
+			
+			sessionStorage.setItem("listaGeral",JSON.stringify(listaGeral));
+		}
+
+		if (JSON.parse(sessionStorage.getItem("listaPessoal")) == null) {
+
+			var Musica1 = {nome:"I feel Amazing", album:"In the 876", artista:"Richie Campbell", gostos:0, botao:"MusicaGeral.png", albumImagem:"InThe876.png"};
+			var Musica2 = {nome:"Keep Yourself Alive", album:"Queen", artista:"Queen", gostos:0, botao:"MusicaGeral.png", albumImagem:"Queen.png"};
+			var Musica3 = {nome:"Numb", album:"Meteora", artista:"Linkin Park", gostos:0, botao:"MusicaGeral.png", albumImagem:"Meteora.png"};
+			var Musica4 = {nome:"Adventure of a Lifetime", album:"A Head Full of Dreams", artista:"Coldplay", gostos:69, botao:"MusicaGeralHidden.png", albumImagem:"AHeadFullofDreams.png"};
+			var Musica5 = {nome:"Throw Away Your Television", album:"By the Way", artista:"Red Hot Chili Peppers", gostos:35, botao:"MusicaGeralHidden.png", albumImagem:"ByTheWay.png"};
+			var Musica6 = {nome:"Amazing", album:"Get a Grip", artista:"Aerosmith", gostos:98, botao:"MusicaGeralHidden.png", albumImagem:"GetAGrip.png"};
+			var Musica7 = {nome:"Lie to Me", album:"These Days", artista:"Bon Jovi", gostos:38, botao:"MusicaGeralHidden.png", albumImagem:"TheseDays.png"};
+			var Musica8 = {nome:"Goodbye Heartbreak", album:"Greatest Hits", artista:"Lighthouse Family", gostos:34, botao:"MusicaGeralHidden.png", albumImagem:"GreatestHitsLHF.png"};
+			var Musica9 = {nome:"Beat It", album:"Thriller", artista:"Michael Jackson", gostos:101, botao:"MusicaGeralHidden.png", albumImagem:"Thriller.png"};
+			var Musica10 = {nome:"I belong to You", album:"5", artista:"Lenny Kravitz", gostos:29, botao:"MusicaGeralHidden.png", albumImagem:"5.png"};
+
+			var listaPessoal = [Musica1, Musica2, Musica3, Musica4, Musica5, Musica6, Musica7, Musica8, Musica9, Musica10]
+
+			sessionStorage.setItem("listaPessoal",JSON.stringify(listaPessoal));
+		}
+
+		if (JSON.parse(sessionStorage.getItem("listaPessoalAdicionar")) == null) {
+
+			var Musica1 = {nome:"A Line in the Sand", album:"The Hunting Party", artista:"Linkin Park", gostos:0, botao:"MusicaGeral.png", albumImagem:"TheHuntingParty.png"};
+			var Musica2 = {nome:"Drawbar", album:"The Hunting Party", artista:"Linkin Park", gostos:0, botao:"MusicaGeral.png", albumImagem:"TheHuntingParty.png"};
+			var Musica3 = {nome:"Mark the Graves", album:"The Hunting Party", artista:"Linkin Park", gostos:0, botao:"MusicaGeral.png", albumImagem:"TheHuntingParty.png"};
+			var Musica4 = {nome:"The Summoning", album:"The Hunting Party", artista:"Linkin Park", gostos:0, botao:"MusicaGeral.png", albumImagem:"TheHuntingParty.png"};
+			var Musica5 = {nome:"Love the Way You Lie", album:"Recovery", artista:"Eminem", gostos:0, botao:"MusicaGeral.png", albumImagem:"Recovery.png"};
+			var Musica6 = {nome:"Not Afraid", album:"Recovery", artista:"Eminem", gostos:0, botao:"MusicaGeral.png", albumImagem:"Recovery.png"};
+			var Musica7 = {nome:"25 to Life", album:"Recovery", artista:"Eminem", gostos:0, botao:"MusicaGeral.png", albumImagem:"Recovery.png"};
+			var Musica8 = {nome:"A Sky Full of Stars", album:"Ghost Stories", artista:"Coldplay", gostos:0, botao:"MusicaGeral.png", albumImagem:"GhostStories.png"};
+			var Musica9 = {nome:"Oceans", album:"Ghost Stories", artista:"Coldplay", gostos:0, botao:"MusicaGeral.png", albumImagem:"GhostStories.png"};
+			var Musica10 = {nome:"Always in My Head", album:"Ghost Stories", artista:"Coldplay", gostos:0, botao:"MusicaGeral.png", albumImagem:"GhostStories.png"};
+
+			var listaPessoalAdicionar = [Musica1, Musica2, Musica3, Musica4, Musica5, Musica6, Musica7, Musica8, Musica9, Musica10]
+
+			sessionStorage.setItem("listaPessoalAdicionar",JSON.stringify(listaPessoalAdicionar));
+		}
+
+
+		if (JSON.parse(sessionStorage.getItem("listaComentarios")) == null) {
+			
+			var Nomes = ["Maria", "Henrique", "Ana", "Joaquim", "Carla", "Hugo", "Francisca", "Ricardo"];
+			sessionStorage.setItem("Nomes", Nomes);
+
+			var Henrique = {nome:'Henrique', texto:"A Coca-Cola estava boa!", data:my_date_format("2016-04-27 15:15:14")};
+			var Joaquim = {nome : 'Joaquim' , texto : "Sabor perfeito.", data:my_date_format("2016-01-02 13:05:02")};
+			var Maria = {nome : 'Maria' , texto : "Bebeu-se...", data:my_date_format("2015-12-15 21:36:38")};
+			var Ana = {nome : 'Ana' , texto : "Finalmente um sitio onde existe lipton em vez de nestea", data:my_date_format("2015-12-12 22:32:20")};
+			var Ricardo = {nome : 'Ricardo' , texto : "Com uma pedra de gelo veio mesmo a calhar!", data:my_date_format("2105-12-11 20:03:02")};
+			var Carla = {nome : 'Carla' , texto : "Otima para dar energia!", data:my_date_format("2015-10-04 12:52:52")};
+			var Hugo = {nome : 'Hugo' , texto : "Fantastico!", data:my_date_format("2015-10-04 12:52:51")};
+			var Francisca = {nome : 'Francisca' , texto : "Tem melhores pizzas que muitas pizzarias.", data:my_date_format("2012-05-07 02:07:15")};
+			
+			var listaComentarios = ["Henrique", Henrique, "Joaquim", Joaquim, "Maria", Maria, "Ana", Ana, "Ricardo", Ricardo, "Carla", Carla, "Hugo", Hugo, "Francisca", Francisca];
+
+			sessionStorage.setItem("listaComentarios",JSON.stringify(listaComentarios));
+		}
+
+		if (JSON.parse(sessionStorage.getItem("listaProdutos")) == null) {
+			
+			var CocaColaHenrique = {nome : 'Henrique' , classificacao : 4 , texto : "A Coca-Cola estava boa!", data:my_date_format("2016-04-27 15:15:14")};
+			var CocaColaJoaquim = {nome : 'Joaquim' , classificacao : 5 , texto : "Sabor perfeito.", data:my_date_format("2016-03-21 11:13:57")};
+			var CompalJoaquim = {nome : 'Joaquim' , classificacao : 2 , texto : "Nao gostei do sabor.", data:my_date_format("2015-12-16 17:53:37")};
+			var CompalMaria = {nome : 'Maria' , classificacao : 3 , texto : "Bebeu-se...", data:my_date_format("2015-11-11 14:52:10")};
+			var IceteaAna = {nome : 'Ana' , classificacao : 4 , texto : "Finalmente um sitio onde existe lipton em vez de nestea", data:my_date_format("2015-04-11 10:00:14")};
+			var IceteaRicardo = {nome : 'Ricardo' , classificacao : 4 , texto : "Com uma pedra de gelo veio mesmo a calhar!", data:my_date_format("2015-04-11 08:15:19")};
+			var RedBullCarla = {nome : 'Carla' , classificacao : 4 , texto : "Otima para dar energia!", data:my_date_format("2016-05-05 07:12:59")};
+			var RedBullHugo = {nome : 'Hugo' , classificacao : 4 , texto : "Fantastico!", data:my_date_format("2015-12-04 23:59:59")};
+			var AguaMaria = {nome : 'Maria' , classificacao : 1 , texto : "Marca demasiado reles!", data:my_date_format("2016-04-27 15:15:14")};
+			var AguaHenrique = {nome : 'Henrique' , classificacao : 2 , texto : "Garrafa muito pequena, nem deu para tirar a sede.", data:my_date_format("2016-02-07 23:51:25")};
+			var HamburguerMaria = {nome : 'Maria' , classificacao : 4 , texto : "Hamburguer delicioso! Mas...Para fazer um hamburguer saboroso, a primeira das tecnicas que os profissionais usam e o blend de carnes, isto e, a mistura entre diferentes cortes de carne para que o hamb&uacute;rguer tenha sabor &uacute;nico. No passado, as hamburguerias tradicionais preparavam o hamburguer usando apenas patinho, coxao mole ou outro tipo de carne de preferencia. Mas para seu hamburguer ter personalidade e sabor inigualavel e preciso escolher pelo menos dois cortes de carne para chegar a um resultado unico. Essa mistura vai enriquecer o sabor, porque cada corte de carne tem diferentes quantidades de sangue (algumas sao mais outras sao menos irrigadas), textura de acordo com a parte do corpo do animal e consequentemente o sabor sera diferente.", data:my_date_format("2016-04-27 15:15:14")};
+			var HamburguerAna = {nome : 'Ana' , classificacao : 3 , texto : "Nem alface meteram...", data:my_date_format("2016-03-21 11:13:57")};
+			var CachorroQuenteAna = {nome : 'Joaquim' , classificacao : 4 , texto : "Relacaao de preco-qualidade muito boa!", data:my_date_format("2015-12-16 17:53:37")};
+			var CachorroQuenteHenrique = {nome : 'Henrique' , classificacao : 5 , texto : "Nunca tinha comido um melhor!", data:my_date_format("2015-11-11 14:52:10")};
+			var KebabCarla = {nome : 'Carla' , classificacao : 3 , texto : "Tem muito boa apresentacao, mas quanto ao sabor fiquei um pouco desiludida.", data:my_date_format("2015-04-11 10:00:14")};
+			var KebabHenrique = {nome : 'Henrique' , classificacao : 3 , texto : "Nao sao nada de especial.", data:my_date_format("2015-04-11 08:15:19")};
+			var PizzaHugo = {nome : 'Hugo' , classificacao : 4 , texto : "Achei fantastico puder escolher os meus ingredientes.", data:my_date_format("2016-05-05 07:12:59")};
+			var PizzaFrancisca = {nome : 'Francisca' , classificacao : 4 , texto : "Tem melhores pizzas que muitas pizzarias.", data:my_date_format("2015-12-04 23:59:59")};
+			var PastelNataJoaquim = {nome : 'Joaquim' , classificacao : 1 , texto : "Odeio pasteis de nata frios!", data:my_date_format("2016-04-27 15:15:14")};
+			var PastelNataAna = {nome : 'Ana' , classificacao : 2 , texto : "Parecia de plastico, nao gostei.", data:my_date_format("2016-02-07 23:51:25")};
+
+			var CocaCola = ["CocaColaHenrique", CocaColaHenrique, "CocaColaJoaquim", CocaColaJoaquim, "classificacao", 4.5];
+			var Compal = ["CompalJoaquim", CompalJoaquim, "CompalMaria", CompalMaria, "classificacao", 2.5];
+			var Icetea = ["IceteaAna", IceteaAna, "IceteaRicardo", IceteaRicardo, "classificacao", 4];
+			var RedBull = ["RedBullCarla", RedBullCarla, "RedBullHugo", RedBullHugo, "classificacao", 4];
+			var Agua = ["AguaMaria", AguaMaria, "AguaHenrique", AguaHenrique, "classificacao", 1.5];
+			var Hamburguer = ["HamburguerMaria", HamburguerMaria, "HamburguerAna", HamburguerAna, "classificacao", 3.5];
+			var CachorroQuente = ["CachorroQuenteAna", CachorroQuenteAna, "CachorroQuenteHenrique", CachorroQuenteHenrique, "classificacao", 4.5];
+			var Kebab = ["KebabCarla", KebabCarla, "KebabHenrique", KebabHenrique, "classificacao", 3];
+			var Pizza = ["PizzaHugo", PizzaHugo, "PizzaFrancisca", PizzaFrancisca, "classificacao", 4];
+			var PastelNata = ["PastelNataJoaquim", PastelNataJoaquim, "PastelNataAna", PastelNataAna, "classificacao", 1.5];
+
+			var bebidas = ["CocaCola", CocaCola, "Compal", Compal, "IceTea", Icetea, "RedBull", RedBull, "Agua", Agua];
+			var comidas = ["Hamburguer", Hamburguer, "CachorroQuente", CachorroQuente, "Kebab", Kebab, "Pizza", Pizza, "PastelNata", PastelNata];
+			
+			var listaProdutos = ["bebidas", bebidas, "comidas", comidas];
+
+			sessionStorage.setItem("listaProdutos",JSON.stringify(listaProdutos));
+		}
+
+		function my_date_format(input){
+		    var d = new Date(Date.parse(input.replace(/-/g, "/")));
+		    var month = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+		    var date = d.getDate() + "-" + month[d.getMonth()] + "-" + d.getFullYear();
+		    var time = d.toLocaleTimeString().toLowerCase().replace(/([\d]+:[\d]+):[\d]+(\s\w+)/g, "$1$2");
+		    return (date + " " + time);  
+		};
+		
+		var lista = ["index.html"];
+		var info = 0;
+
+		function Information() {
+		    if (info == 0) {
+		        var overlay = document.getElementById("OverlayInformation");
+		        var popup = document.getElementById("PopupInformation");
+		        overlay.style.display = "block";
+		        popup.style.display = "block";     		        
+		        info = 1;
+		    }
+		    else {
+	        	var overlay = document.getElementById("OverlayInformation");
+	        	var popup = document.getElementById("PopupInformation");
+	        	overlay.style.display = "none";
+	        	popup.style.display = "none";
+	        	info = 0; 
+			}
+    	}
+    
+		function CarregaPagina(ref) {
+			if (ref == 'Ementa') {
+				lista.push("MenuEmenta.html");
+				location.href = "MenuEmenta.html";
+			}
+			else if (ref == 'Musica') {
+				lista.push("MenuMusica.html");
+	    		location.href = 'MenuMusica.html';
+			}
+			else if (ref == 'Sugestoes') {
+				lista.push("MenuSugestoes.html");
+				location.href = 'MenuSugestoes.html';
+			}
+			else if (ref == "SetaDireita") {
+				if (sessionStorage.getItem("contaUtilizador") == "Logout") {
+					lista.push("indexDireita2.html");
+					location.href = "indexDireita2.html";
+				}
+				else {
+					lista.push("indexDireita1.html");
+	    			location.href = "indexDireita1.html";
+				}
+			}
+			else if (ref == 'Comida') {
+				lista.push("MenuEmenta.html")
+				lista.push("MenuComida.html");
+	    		location.href = 'MenuComida.html';
+			}
+			else if (ref == 'Bebida') {
+				lista.push("MenuEmenta.html")
+				lista.push("MenuBebida.html");
+	    		location.href = 'MenuBebida.html';
+			}
+			else if (ref == 'Escrever') {
+				lista.push("MenuSugestoes.html")
+				lista.push("MenuInserirComentario.html");
+	    		location.href = 'MenuInserirComentario.html';
+			}
+			else if (ref == 'Ler') {
+				lista.push("MenuSugestoes.html")
+				lista.push("MenuVerComentarios.html");
+	    		location.href = 'MenuVerComentarios.html';
+			}
+			else if (ref == 'Pessoal') {
+				lista.push("MenuMusica.html")
+				lista.push("MenuPessoal.html");
+	    		location.href = 'MenuPessoal.html';
+			}
+			else if (ref == 'Geral') {
+				lista.push("MenuMusica.html")
+				lista.push("MenuGeral.html");
+	    		location.href = 'MenuGeral.html';
+			}
+			sessionStorage.setItem("lista", lista);
+	  	}
+
+	</script>
+
+</head>
+
+
+<body style="font-family:sans-serif; text-align: center; margin: 0%">
+	<div id="mySidenav" class="sidenav">
+		<div style="position: absolute; top: 0%; left: 37%"><h4> Ol&aacute; Hugo! </h4></div>
+		<a style="position: absolute; right: 5%; top: 1%" class="closebtn menu_home" onclick="closeNav()">&times;</a>
+		<table style="margin-top: 10%;">
+	  		<tr>
+			  	<td><div style="transform: rotate(-90deg); margin-left:-40%">Ementa</div></td>
+		  		<td><img style="margin-left:-80%; margin-top:10%; cursor:pointer" src="Comida.png" width="115%" onclick="CarregaPagina('Comida')" class="menu_home"></img></td>
+				<td><img style="margin-left:-40%; margin-top:10%; cursor:pointer" src="Bebida.png" width="115%" onclick="CarregaPagina('Bebida')" class="menu_home"></img></td>
+			</tr>
+		  	<tr><td colspan="3" style="border-top: 2px solid #001c2a; padding-bottom: 2%"></td></tr>
+		  	<tr><td colspan="3" style="visibility: hidden; padding-bottom: 10%"></td></tr>
+		  	<tr>
+			  	<td><div style="transform: rotate(-90deg); margin-left:-40%">M&uacute;sica</div></td>
+		  		<td><img style="margin-left:-80%; margin-top:10%; cursor:pointer" src="Pessoal.png" width="115%" onclick="CarregaPagina('Pessoal')" class="menu_home"></img></td>
+				<td><img style="margin-left:-40%; margin-top:10%; cursor:pointer" src="Geral.png" width="115%" onclick="CarregaPagina('Geral')" class="menu_home"></img></td>
+			</tr>
+			<tr><td colspan="3" style="border-top: 2px solid #001c2a; padding-bottom: 2%"></td></tr>
+		  	<tr><td colspan="3" style="visibility: hidden; padding-bottom: 10%"></td></tr>
+			<tr>
+			  	<td><div style="transform: rotate(-90deg); margin-left:-40%">Sugest&otilde;es</div></td>
+		  		<td><img style="margin-left:-80%; margin-top:10%; cursor:pointer" src="Escrever.png" width="115%" onclick="CarregaPagina('Escrever')" class="menu_home"></img></td>
+				<td><img style="margin-left:-40%; margin-top:10%; cursor:pointer" src="Ler.png" width="115%" onclick="CarregaPagina('Ler')" class="menu_home"></img></td>
+			</tr>
+			<tr>
+				<td colspan="3" style="border-top: 2px solid #001c2a; padding-bottom: 2%"></td>
+			</tr>
+		</table>
+	</div>
+	<div id="main">
+	    <div><img onclick="Information()" class="InfoButton menu_home" src="info.png" style="cursor:pointer"></img></div>
+		<div id="OverlayInformation1" onclick="closeNav()"></div>
+		<div id="OverlayInformation" onclick="Information()"></div>
+		<div style="margin: 0 auto; height:45%;" id="PopupInformation">
+		   	<h2 style="padding-top:2%"> Ol&aacute; Hugo! </h2>
+			<h4> Seja bem vindo ao bar o BarISTa! Neste menu poder&aacute; aceder: </h4>
+			<ul style="text-align: left; padding-right: 5%; padding-left: 7.5%">
+				<li> Menu Ementa onde pode escolher o que quer consumir. </li>
+				<li> Menu M&uacute;sica onde poder&aacute; escolher as suas m&uacute;sicas mais favoritas, as quais ter&atilde;o oportunidade de serem tocadas no bar. </li>
+				<li> Menu Sugest&uacute;es onde poder&aacute; indicar pontos negativos e positivos deste estabelecimento, como tamb&eacute;m sugerir novas ideias. </li>
+				<li> Menu Cesto onde poder&aacute; efectuar o pagamento. </li>
+				<li> Menu Jogos onde tem ao seu dispor o melhor entertimento para as horas mais chatas. </li>
+			</ul>
+			<h6> Apenas os menus Ementa, M&uacute;sica e Sugest&uacute;es est&aacute;o dispon&iacute;veis. Lamentamos o inc&oacute;modo.</h6>
+			<div><img onclick="Information()" class="CloseButton menu_home" src="CloseIcon.png" style="cursor:pointer"></img></div>
+		</div>
+		
+		<div class="qwerty">
+			<h4 style="margin-top: 1.3%"> </h4>
+			<img style="position: absolute; top:1%; left:95.35%; cursor:pointer" class="menu_home" src="Musica.png" width="4.75%" onclick="CarregaPagina('Musica')">
+		</div>
+		
+		<div style="position:absolute; left:3%; top:30%; width:90%; border-top:5px solid grey;">
+			<table style="margin-top:5%; border-spacing:10%;">
+				<tr>
+					<th></th>
+					<th></th>
+					<th class="FontMenus"> Ementa </th>
+					<th></th>
+					<th class="FontMenus"> M&uacute;sica </th>
+					<th></th>
+					<th class="FontMenus"> Sugest&otilde;es </th>
+					<th></th>
+					<th class="FontMenus"> Cesto </th>
+					<th></th>
+					<th></th>
+				</tr>
+				</tr>
+					<td style="visibility:hidden"> <img src="SetaEsquerda.png" width="80%"></img> </td>
+					<td style="width:2%; height:2%"></td>
+					<td onclick="CarregaPagina('Ementa')"> <img src="Ementa.png" width="107%" style="cursor:pointer" class="menu_home"></img></td>
+					<td style="width:2%; height:2%"></td>
+					<td onclick="CarregaPagina('Musica')"> <img src="Musica.png" width="107%" style="cursor:pointer" class="menu_home"></img> </td>
+					<td style="width:2%; height:2%"></td>
+					<td onclick="CarregaPagina('Sugestoes')"> <img src="Sugestoes.png" width="107%" style="cursor:pointer" class="menu_home"></img> </td>
+					<td style="width:2%; height:2%"></td>
+					<td onclick="CarregaPagina('Cesto')"> <img src="Cesto.png" width="107%"></img> </td>
+					<td style="width:2%; height:2%"></td>
+					<td onclick="CarregaPagina('SetaDireita')"> <img src="SetaDireita.png" width="80%" style="cursor:pointer" class="menu_home"></img> </td>
+				</tr>
+			</table>	
+		</div>
+		<span style="position:absolute; top: 1%; left: 2%; font-size:450%; cursor:pointer; color:#3F3E3E;" class="menu_home" onclick="openNav()">&equiv;</span>
+	</div>
+	<script>
+		function openNav() {
+		    document.getElementById("mySidenav").style.width = "22%";
+		    setTimeout(function() {
+		    document.getElementById("OverlayInformation1").style.display = "block";
+   		    document.getElementById("OverlayInformation1").style.left = "22%";
+		    }, 650);
+		}
+
+		function closeNav() {
+		    document.getElementById("mySidenav").style.width = "0%";
+		    document.getElementById("OverlayInformation1").style.display = "none";
+   		    document.getElementById("OverlayInformation1").style.left = "0%";
+		}
+	</script>
+	<script src="jquery.min.js"></script>
+	<script type="text/javascript">
+		
+  		var listaGeral = JSON.parse(sessionStorage.getItem("listaGeral"));
+		if (listaGeral[0].gostos == 0) {
+			$(".qwerty").children().eq(0).html(listaGeral[0].nome + " - " + listaGeral[0].album + " - " + listaGeral[0].artista)
+		}
+		else {
+			listaGeral.sort(listaSort('gostos'));
+			$(".qwerty").children().eq(0).html(listaGeral[0].nome + " - " + listaGeral[0].album + " - " + listaGeral[0].artista)
+		}
+		sessionStorage.setItem("listaGeral",JSON.stringify(listaGeral));
+
+		function listaSort(ref) {
+			return function(var1, var2) {
+				return (var1[ref] > var2[ref]) ? -1:(var1[ref] < var2[ref] ? 1:0);
+			}
+		}
+
+		setInterval(function() {
+			listaGeral = JSON.parse(sessionStorage.getItem("listaGeral"));
+			listaGeral[0].gostos = 0;
+			listaGeral[0].botao = "LikeButtonUncheck.png";
+			listaGeral.push(listaGeral[0]);
+			listaGeral.shift();
+			sessionStorage.setItem("listaGeral",JSON.stringify(listaGeral));
+			if (listaGeral[0].gostos == 0) {
+				$(".qwerty").children().eq(0).html(listaGeral[0].nome + " - " + listaGeral[0].album + " - " + listaGeral[0].artista)
+			}
+			else {
+				listaGeral.sort(listaSort('gostos'));
+				$(".qwerty").children().eq(0).html(listaGeral[0].nome + " - " + listaGeral[0].album + " - " + listaGeral[0].artista)
+			}
+			sessionStorage.setItem("listaGeral",JSON.stringify(listaGeral));
+
+			function listaSort(ref) {
+				return function(var1, var2) {
+					return (var1[ref] > var2[ref]) ? -1:(var1[ref] < var2[ref] ? 1:0);
+				}
+			}
+		}, 5000);
+	</script>
+	</body>
+</html>
