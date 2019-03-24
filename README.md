@@ -1,4 +1,4 @@
-# # Introduction to Human-Computer Interaction Project (2015-2016)
+# Introduction to Human-Computer Interaction Project (2015-2016)
 
 ### Contributors
 - [@hugogaspar8](https://github.com/hugogaspar8) - Hugo Gaspar
